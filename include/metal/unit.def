@@ -60,9 +60,9 @@ void __metal_unit_break(__metal_level lvl,
                int line);
 
 #if defined(METAL_UNIT_ONLY_ERRORS)
-#define __metal_unit_impl(lvl, oper, condition, ...) (((condition == 0) && (lvl == __metal_level_assert)) ? __metal_unit_break(lvl, oper, condition, __VA_ARGS__) : ((void)0))
+#define __metal_unit_impl(lvl, oper, condition, ...) ((((condition) == 0) && (lvl == __metal_level_assert)) ? __metal_unit_break(lvl, oper, condition, __VA_ARGS__) : ((void)0))
 #elif defined(METAL_UNIT_ONLY_WARNINGS)
-#define __metal_unit_impl(lvl, oper, condition, ...) ((condition == 0) ? __metal_unit_break(lvl, oper, condition, __VA_ARGS__) : ((void)0))
+#define __metal_unit_impl(lvl, oper, condition, ...) (((condition) == 0) ? __metal_unit_break(lvl, oper, condition, __VA_ARGS__) : ((void)0))
 #else
 #define __metal_unit_impl(...) __metal_unit_break(__VA_ARGS__)
 #endif
